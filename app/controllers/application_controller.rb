@@ -10,8 +10,8 @@ class App < Sinatra::Base
 
     post '/teams' do
       @team = Team.new(params[:team])
-      params[:team][:heroes].each do |t|
-        Teams.new(t)
+      params[:team][:heroes].each do { |t| Hero.new(t) }
+        @heroes - Hero.all
     end
 
     @heroes = Hero.all
